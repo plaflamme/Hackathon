@@ -18,6 +18,7 @@ REDUCERS=100
 ORIGINAL_FILE=File.symlink?(__FILE__) ? File.readlink(__FILE__) : __FILE__
 SCIENCE_ROOT=File.expand_path(File.dirname(ORIGINAL_FILE)+"/../")
 JARFILE=SCIENCE_ROOT + "/target/scalding-assembly-#{SCALDING_VERSION}.jar" #what jar has all the depencies for this job
+JARFILE=SCIENCE_ROOT + "/scalding-assembly-#{SCALDING_VERSION}.jar" #what jar has all the depencies for this job
 puts JARFILE
 HOST="cluster-4.hackreduce.org" #where the job is rsynced to and run
 TMPDIR="/tmp"
