@@ -20,7 +20,7 @@ SCIENCE_ROOT=File.expand_path(File.dirname(ORIGINAL_FILE)+"/../")
 JARFILE=SCIENCE_ROOT + "/target/scalding-assembly-#{SCALDING_VERSION}.jar" #what jar has all the depencies for this job
 JARFILE=SCIENCE_ROOT + "/scalding-assembly-#{SCALDING_VERSION}.jar" #what jar has all the depencies for this job
 puts JARFILE
-HOST="cluster-4.hackreduce.org" #where the job is rsynced to and run
+HOST="cluster-1.hackreduce.org" #where the job is rsynced to and run
 TMPDIR="/tmp"
 BUILDDIR=TMPDIR+"/script-build"
 LOCALMEM="3g" #how much memory for java to use when running in local mode
