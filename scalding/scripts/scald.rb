@@ -19,7 +19,7 @@ ORIGINAL_FILE=File.symlink?(__FILE__) ? File.readlink(__FILE__) : __FILE__
 SCIENCE_ROOT=File.expand_path(File.dirname(ORIGINAL_FILE)+"/../")
 JARFILE=SCIENCE_ROOT + "/target/scalding-assembly-#{SCALDING_VERSION}.jar" #what jar has all the depencies for this job
 puts JARFILE
-HOST="my.remote.host" #where the job is rsynced to and run
+HOST="cluster-4.hackreduce.org" #where the job is rsynced to and run
 TMPDIR="/tmp"
 BUILDDIR=TMPDIR+"/script-build"
 LOCALMEM="3g" #how much memory for java to use when running in local mode
@@ -160,12 +160,12 @@ end
 
 def hadoop_command
   "HADOOP_CLASSPATH=/usr/share/java/hadoop-lzo-0.4.14.jar:#{JARBASE}:job-jars/#{JOBJAR} " +
-    "hadoop jar #{JARBASE} -libjars job-jars/#{JOBJAR} -Dmapred.reduce.tasks=#{REDUCERS} #{JOB} --hdfs " +
+    "hadoop/bin/hadoop jar #{JARBASE} -libjars job-jars/#{JOBJAR} -Dmapred.reduce.tasks=#{REDUCERS} #{JOB} --hdfs " +
     ARGV.join(" ")
 end
 
 def jar_mode_command
-  "hadoop jar #{JARBASE} -Dmapred.reduce.tasks=#{REDUCERS} #{JOB} --hdfs " + ARGV.join(" ")
+  "hadoop/bin/hadoop jar #{JARBASE} -Dmapred.reduce.tasks=#{REDUCERS} #{JOB} --hdfs " + ARGV.join(" ")
 end
 
 #Always sync the remote JARFILE
